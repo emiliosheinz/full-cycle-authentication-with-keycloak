@@ -1,0 +1,17 @@
+@startuml
+actor RO as "Resource Owner"
+actor AS as "Authorizationv Server"
+actor CA as "Client Application"
+actor RS as "Resource Server"
+
+RO -> AS: Login
+AS -> RO: Prompt consent
+RO -> AS: Consent
+
+AS -> CA: Send authorization code request
+CA -> AS: Send authorization code grant request
+AS -> CA: Send access token
+
+CA -> RS: Send API request with access token
+RS -> CA: Send resource response
+@enduml
