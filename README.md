@@ -35,3 +35,7 @@ In Keycloak, a **realm** is a security administrative domain where users, applic
 ## Roles and Groups
 
 Keycloak uses **roles** and **groups** to manage user permissions and access control within a realm. **Roles** define a set of permissions or privileges that can be assigned to users or client applications, allowing fine-grained control over resource access. Users can have multiple roles assigned to them, enabling organizations to implement role-based access control (RBAC) policies. **Groups**, on the other hand, are collections of users that can be used to organize users based on common attributes or roles. Groups simplify user management by allowing administrators to assign roles to multiple users at once and manage permissions at a group level.
+
+## Clients
+
+In Keycloak, a **client** represents an application or service that interacts with the Keycloak server to authenticate users and access protected resources. Clients can be of different types, such as web applications, mobile apps, service accounts, or APIs, each requiring specific configurations and authentication mechanisms. Keycloak supports various client protocols, including OpenID Connect, OAuth 2.0, and SAML, enabling seamless integration with different types of applications and services. Clients can request access tokens, refresh tokens, and ID tokens from the Keycloak server to authenticate users and authorize access to resources, ensuring secure communication and data protection.
