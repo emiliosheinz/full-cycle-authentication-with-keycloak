@@ -27,3 +27,11 @@ OpenID Connect (OIDC) is an identity layer built on top of the OAuth 2.0 protoco
 - **Multi-Factor Authentication (MFA)**: Keycloak offers MFA capabilities, such as OTP (One-Time Password), email verification, and biometric authentication, enhancing security by requiring multiple factors for user authentication.
 
 - **Fine-Grained Access Control**: Keycloak enables organizations to define and enforce fine-grained access policies based on user roles, permissions, and attributes, ensuring that users have the right level of access to resources.
+
+## Realm
+
+In Keycloak, a **realm** is a security administrative domain where users, applications, and resources are managed and secured. Realms are isolated from each other, allowing organizations to define separate security policies, user stores, and authentication flows for different environments or applications. Each realm has its own configuration settings, user database, roles, and client applications, providing a logical boundary for managing identities and access control. Keycloak supports multiple realms within a single instance, enabling organizations to create distinct security domains for different use cases or departments.
+
+## Roles and Groups
+
+Keycloak uses **roles** and **groups** to manage user permissions and access control within a realm. **Roles** define a set of permissions or privileges that can be assigned to users or client applications, allowing fine-grained control over resource access. Users can have multiple roles assigned to them, enabling organizations to implement role-based access control (RBAC) policies. **Groups**, on the other hand, are collections of users that can be used to organize users based on common attributes or roles. Groups simplify user management by allowing administrators to assign roles to multiple users at once and manage permissions at a group level.
