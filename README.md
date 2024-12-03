@@ -39,3 +39,7 @@ Keycloak uses **roles** and **groups** to manage user permissions and access con
 ## Clients
 
 In Keycloak, a **client** represents an application or service that interacts with the Keycloak server to authenticate users and access protected resources. Clients can be of different types, such as web applications, mobile apps, service accounts, or APIs, each requiring specific configurations and authentication mechanisms. Keycloak supports various client protocols, including OpenID Connect, OAuth 2.0, and SAML, enabling seamless integration with different types of applications and services. Clients can request access tokens, refresh tokens, and ID tokens from the Keycloak server to authenticate users and authorize access to resources, ensuring secure communication and data protection.
+
+## Authentication flows
+
+Keycloak provides flexible **authentication flows** to authenticate users based on different criteria, such as username/password, social login, multi-factor authentication, and client certificates. Authentication flows define the sequence of authentication steps that users must complete to prove their identity and gain access to protected resources. Keycloak supports customizable authentication flows, allowing organizations to define custom authentication requirements, implement adaptive authentication policies, and integrate with external identity providers. By configuring authentication flows, organizations can enforce security policies, enhance user experience, and meet compliance requirements effectively.
