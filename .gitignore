@@ -1,1 +1,2 @@
-.docker/dbdata
+.docker
+node_modules
