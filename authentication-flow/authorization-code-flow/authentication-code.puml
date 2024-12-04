@@ -1,0 +1,20 @@
+@startuml
+actor "Resource Owner"
+participant "User Agent" as UA
+participant "Authorization Server" as AS
+participant "Client Application" as CA
+participant "Resource Server" as RS
+
+"Resource Owner" -> UA: Access the client application
+UA -> CA: Redirects to the authorization URL
+CA -> AS: Requests an access authorization
+AS -> "Resource Owner": Displays the login screen
+"Resource Owner" -> AS: Provides authentication credentials
+AS -> "Resource Owner": Displays the consent screen for access
+"Resource Owner" -> AS: Grants consent
+AS -> CA: Returns an authorization code
+CA -> AS: Requests an access token, providing the authorization code
+AS -> CA: Returns an access token
+CA -> RS: Requests a protected resource, providing the access token
+RS --> CA: Returns the protected resource
+@enduml

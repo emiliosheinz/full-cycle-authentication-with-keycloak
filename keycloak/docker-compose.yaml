@@ -13,10 +13,11 @@ services:
       KC_DB_URL: jdbc:mysql://database:3306/keycloak
       KC_DB_USERNAME: root
       KC_DB_PASSWORD: root
-
     depends_on:
       database:
         condition: service_healthy
+    networks:
+      - fullcycle
 
   database:
     image: mysql:latest
@@ -30,3 +31,10 @@ services:
       interval: 3s
       timeout: 30s
       retries: 10
+    networks:
+      - fullcycle
+
+networks:
+  fullcycle:
+    external: true
+
