@@ -43,3 +43,15 @@ In Keycloak, a **client** represents an application or service that interacts wi
 ## Authentication flows
 
 Keycloak provides flexible **authentication flows** to authenticate users based on different criteria, such as username/password, social login, multi-factor authentication, and client certificates. Authentication flows define the sequence of authentication steps that users must complete to prove their identity and gain access to protected resources. Keycloak supports customizable authentication flows, allowing organizations to define custom authentication requirements, implement adaptive authentication policies, and integrate with external identity providers. By configuring authentication flows, organizations can enforce security policies, enhance user experience, and meet compliance requirements effectively.
+
+### Authorization Code Flow 
+
+The **authorization code flow** is one of the most common OAuth 2.0 flows used for web applications that require user authentication. It involves multiple steps, starting with the client redirecting the user to the Keycloak server for authentication. Once the user logs in and consents to the requested permissions, the server issues an authorization code to the client. The client then exchanges the authorization code for an access token and refresh token, which can be used to access protected resources on behalf of the user. The authorization code flow ensures secure communication between the client and the Keycloak server, preventing exposure of sensitive information like access tokens in the browser.
+
+You can find a simplistic example implementation of this flow in the [authorization-code-flow](./authorization-code-flow) directory.
+
+#### Known Possible Vulnerabilities
+
+- **Replay Attacks**: An attacker can intercept the authorization code and replay it to obtain an access token, impersonating the legitimate user. To prevent replay attacks, it's essential to use secure communication channels, validate tokens, and implement anti-replay mechanisms.
+
+- **Cross-Site Request Forgery (CSRF)**: An attacker can trick a user into executing unauthorized actions on the client application by exploiting CSRF vulnerabilities. To mitigate CSRF attacks, developers should implement CSRF protection mechanisms like CSRF tokens and same-site cookies.
