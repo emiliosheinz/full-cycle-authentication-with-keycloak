@@ -55,3 +55,11 @@ You can find a simplistic example implementation of this flow in the [authorizat
 - **Replay Attacks**: An attacker can intercept the authorization code and replay it to obtain an access token, impersonating the legitimate user. To prevent replay attacks, it's essential to use secure communication channels, validate tokens, and implement anti-replay mechanisms.
 
 - **Cross-Site Request Forgery (CSRF)**: An attacker can trick a user into executing unauthorized actions on the client application by exploiting CSRF vulnerabilities. To mitigate CSRF attacks, developers should implement CSRF protection mechanisms like CSRF tokens and same-site cookies.
+
+### Implicit Flow
+
+The Implicit Flow is an OAuth 2.0 authorization mechanism designed for scenarios where the client (application) cannot securely store credentials, such as single-page applications (SPAs) and mobile applications. It allows the application to obtain an access token directly from the authorization server without the need for an intermediate authorization code exchange. This flow is particularly suitable for front-end JavaScript applications, as the access token is delivered directly in the user's browser immediately after the application makes an authorization request.
+
+Despite its simplicity and efficiency, the Implicit Flow has significant security limitations. The direct delivery of the access token in the user's browser exposes it to risks such as cross-site scripting (XSS) attacks if proper security measures are not in place. Furthermore, the Implicit Flow does not provide a refresh token, requiring the application to redirect users to the authorization server to obtain a new access token once the current one expires. While this flow is convenient for certain use cases, its use demands careful consideration of security precautions to protect access tokens. 
+
+You can find a simplistic example implementation of this flow in the [implicit-flow](./implicit-flow) directory.
