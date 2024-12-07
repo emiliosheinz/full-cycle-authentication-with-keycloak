@@ -50,6 +50,8 @@ The **authorization code flow** is one of the most common OAuth 2.0 flows used f
 
 You can find a simplistic example implementation of this flow in the [authorization-code-flow](./authorization-code-flow) directory.
 
+![Authorization Code Flow](./authentication-flow/authorization-code-flow/authorization-code.svg)
+
 #### Known Possible Vulnerabilities
 
 - **Replay Attacks**: An attacker can intercept the authorization code and replay it to obtain an access token, impersonating the legitimate user. To prevent replay attacks, it's essential to use secure communication channels, validate tokens, and implement anti-replay mechanisms.
@@ -63,3 +65,12 @@ The Implicit Flow is an OAuth 2.0 authorization mechanism designed for scenarios
 Despite its simplicity and efficiency, the Implicit Flow has significant security limitations. The direct delivery of the access token in the user's browser exposes it to risks such as cross-site scripting (XSS) attacks if proper security measures are not in place. Furthermore, the Implicit Flow does not provide a refresh token, requiring the application to redirect users to the authorization server to obtain a new access token once the current one expires. While this flow is convenient for certain use cases, its use demands careful consideration of security precautions to protect access tokens. 
 
 You can find a simplistic example implementation of this flow in the [implicit-flow](./implicit-flow) directory.
+
+![Implicit Flow](./authentication-flow/implicit-flow/implicit-flow.svg)
+
+## Hybrid flow
+
+The Hybrid Flow is an OAuth 2.0 authorization mechanism that combines elements of the **Authorization Code Flow** and the **Implicit Flow** to provide a more secure and flexible approach for web applications. It is mainly designed to address the limitations of the Implicit Flow, such as the lack of refresh tokens and the exposure of access tokens in the browser. The Hybrid Flow allows the client to receive an authorization code and an ID token directly from the authorization server, while the access token is obtained through a back-channel token exchange. This approach ensures that sensitive tokens are not exposed in the browser and provides additional security features like token validation and integrity checks.
+
+![Hybrid Flow](./authentication-flow/hybrid-flow/hybrid-flow.svg)
+

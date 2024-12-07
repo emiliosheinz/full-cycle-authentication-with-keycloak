@@ -1,0 +1,24 @@
+@startuml
+
+actor User
+participant UserAgent
+participant Client
+participant AuthorizationServer
+participant ResourceServer
+
+User -> UserAgent: Access the application
+UserAgent -> Client: Request authorization
+Client -> AuthorizationServer: Request authorization
+AuthorizationServer -> UserAgent: Display login screen
+UserAgent -> AuthorizationServer: Enter credentials
+AuthorizationServer -> UserAgent: Authenticate the user
+UserAgent -> AuthorizationServer: Authorize access
+AuthorizationServer -> UserAgent: Return authorization code and ID token/Access Token
+UserAgent -> Client: Redirect to redirect URI with authorization code and ID token/Access Token
+Client -> User: Redirect to callback URL with authorization code and ID token/Access Token
+User -> Client: Access the callback URL
+Client -> AuthorizationServer: Exchange authorization code for access tokens and ID token
+AuthorizationServer -> Client: Return access tokens and ID token
+Client -> User: Display protected resource
+
+@enduml

@@ -6,9 +6,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "authorization-code": "nodemon ./authorization-code-flow/src/index.ts",
     "implicit": "cd ./implicit-flow && npm run dev"
+    "hybrid": "cd ./hybrib-flow && npm run dev"
   },
   "workspaces": [
-    "implicit-flow"
+    "implicit-flow",
+    "hybrid-flow"
   ],
   "keywords": [],
   "author": "",
