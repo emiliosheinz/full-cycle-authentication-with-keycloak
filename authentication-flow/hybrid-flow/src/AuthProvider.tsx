@@ -7,7 +7,7 @@ type AuthContextProps = {
   auth: JWTPayload | null;
   makeLoginUrl: () => string;
   makeLogoutUrl: () => string;
-  login: (accessToken: string, idToken: string, state: string) => JWTPayload;
+  login: (accessToken: string, idToken: string, code: string, state: string) => JWTPayload;
 };
 
 export const AuthContext = createContext<AuthContextProps | null>(null);
@@ -16,9 +16,12 @@ export const AuthProvider = (props: PropsWithChildren) => {
   const [authData, setAuthData] = useState(utils.getAuth());
 
   const makeLogin = useCallback(
-    (accessToken: string, idToken: string, state: string) => {
-      const authData = utils.login(accessToken, idToken, state);
+    (accessToken: string, idToken: string, code: string, state: string) => {
+      const authData = utils.login(accessToken, idToken, undefined, state);
       setAuthData(authData)
+      utils.exchangeCodeForToken(code).then((authData) => {
+        setAuthData(authData)
+      })
       return authData;
     },
     []

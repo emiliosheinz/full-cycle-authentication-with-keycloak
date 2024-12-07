@@ -18,13 +18,14 @@ export function Callback() {
     const accessToken = searchParams.get("access_token") as string;
     const idToken = searchParams.get("id_token") as string;
     const state = searchParams.get("state") as string;
+    const code = searchParams.get("code") as string
 
-    if (!accessToken || !idToken || !state) {
+    if (!accessToken || !idToken) {
       navigate("/login");
       return
     }
 
-    login(accessToken, idToken, state);
+    login(accessToken, idToken, code, state);
   }, [hash, login, auth, navigate]);
 
   return <div>Loading...</div>;
