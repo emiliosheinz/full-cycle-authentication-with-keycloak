@@ -26,5 +26,6 @@
     "express": "^4.21.1",
     "express-session": "^1.18.1",
     "jsonwebtoken": "^9.0.2"
-  }
+  },
+  "prettier": {}
 }
