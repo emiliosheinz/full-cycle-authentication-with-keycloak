@@ -5,6 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "authorization-code": "nodemon ./authorization-code-flow/src/index.ts",
+    "direct-grant": "nodemon ./direct-grant/src/index.ts",
     "implicit": "cd ./implicit-flow && npm run dev",
     "hybrid": "cd ./hybrid-flow && npm run dev"
   },

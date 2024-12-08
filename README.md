@@ -48,9 +48,9 @@ Keycloak provides flexible **authentication flows** to authenticate users based 
 
 The **authorization code flow** is one of the most common OAuth 2.0 flows used for web applications that require user authentication. It involves multiple steps, starting with the client redirecting the user to the Keycloak server for authentication. Once the user logs in and consents to the requested permissions, the server issues an authorization code to the client. The client then exchanges the authorization code for an access token and refresh token, which can be used to access protected resources on behalf of the user. The authorization code flow ensures secure communication between the client and the Keycloak server, preventing exposure of sensitive information like access tokens in the browser.
 
-You can find a simplistic example implementation of this flow in the [authorization-code-flow](./authorization-code-flow) directory.
-
 ![Authorization Code Flow](./authentication-flow/authorization-code-flow/authorization-code.svg)
+
+You can find a simplistic example implementation of this flow in the [authorization-code-flow](./authorization-code-flow) directory.
 
 #### Known Possible Vulnerabilities
 
@@ -64,13 +64,27 @@ The Implicit Flow is an OAuth 2.0 authorization mechanism designed for scenarios
 
 Despite its simplicity and efficiency, the Implicit Flow has significant security limitations. The direct delivery of the access token in the user's browser exposes it to risks such as cross-site scripting (XSS) attacks if proper security measures are not in place. Furthermore, the Implicit Flow does not provide a refresh token, requiring the application to redirect users to the authorization server to obtain a new access token once the current one expires. While this flow is convenient for certain use cases, its use demands careful consideration of security precautions to protect access tokens. 
 
-You can find a simplistic example implementation of this flow in the [implicit-flow](./implicit-flow) directory.
-
 ![Implicit Flow](./authentication-flow/implicit-flow/implicit-flow.svg)
+
+You can find a simplistic example implementation of this flow in the [implicit-flow](./implicit-flow) directory.
 
 ## Hybrid flow
 
 The Hybrid Flow is an OAuth 2.0 authorization mechanism that combines elements of the **Authorization Code Flow** and the **Implicit Flow** to provide a more secure and flexible approach for web applications. It is mainly designed to address the limitations of the Implicit Flow, such as the lack of refresh tokens and the exposure of access tokens in the browser. The Hybrid Flow allows the client to receive an authorization code and an ID token directly from the authorization server, while the access token is obtained through a back-channel token exchange. This approach ensures that sensitive tokens are not exposed in the browser and provides additional security features like token validation and integrity checks.
 
 ![Hybrid Flow](./authentication-flow/hybrid-flow/hybrid-flow.svg)
+
+you can find a simplistic example implementation of this flow in the [hybrid-flow](./authentication-flow/hybrid-flow) directory.
+
+## Resource Owner Password Credentials Flow
+
+The **Resource Owner Password Credentials (ROPC)** flow, also known as **Direct Grant** flow, is an OAuth 2.0 authorization method that allows a client to obtain an access token using the user’s credentials, such as a username and password, directly. This flow can be useful in scenarios where the client and authorization server are under full control, making implementation simpler for trusted applications. However, it comes with significant security risks, including the direct exposure of user credentials and lack of support for two-factor authentication, which can compromise overall security.
+
+Unlike other OAuth flows like **Authorization Code** or **Implicit**, the ROPC flow does not support granular scopes, meaning the client requests access to all resources the user has permissions for, which may be excessive in certain cases. It is not designed to natively support **Single Sign-On (SSO)**, as it focuses on direct authentication rather than federated identity systems. For SSO, protocols like **OpenID Connect (OIDC)**, combined with OAuth 2.0 flows, are more suitable, as they provide secure and flexible authentication across multiple applications.
+
+Given its limitations, the ROPC flow is generally not recommended unless specific conditions make it necessary. In most cases, using more secure and robust alternatives like the Authorization Code flow, which includes additional security measures and flexibility, is preferred. These approaches are better suited for modern authentication needs, including support for SSO and multi-factor authentication.
+
+![Resource Owner Password Credentials Flow](./authentication-flow/direct-grant/direct-grant.svg)
+
+You can find a simplistic example implementation of this flow in the [direct-grant](./authentication-flow/direct-grant/) directory.
 
