@@ -88,3 +88,39 @@ Given its limitations, the ROPC flow is generally not recommended unless specifi
 
 You can find a simplistic example implementation of this flow in the [direct-grant](./authentication-flow/direct-grant/) directory.
 
+## Running Locally
+
+To run the examples locally, you need to have Docker installed on your machine, and the `fullcycle` network created. 
+
+- Create the `fullcycle` network:
+
+```
+docker network create fullcycle
+```
+
+- Run the Keycloak server:
+
+```bash
+cd keycloak && docker-compose up -d
+```
+
+- Run the example application container:
+
+```bash
+cd authorization-code-flow && docker-compose up -d
+```
+
+- Access the container:
+
+```bash
+docker compose exec app bash
+```
+
+- Run the example application you want:
+
+```bash
+npm run authorization-code # Authorization Code Flow
+npm run implicit # Implicit Flow
+npm run hybrid # Hybrid Flow
+npm run direct-grant # Resource Owner Password Credentials Flow
+```
